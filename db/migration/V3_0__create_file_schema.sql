@@ -1,4 +1,5 @@
-create table if not exists skill (
-    idSkill	            		SERIAL PRIMARY KEY,
-    skillName    	    	varchar(20) not null
+CREATE TABLE if not exists file (
+     id                 int NOT NULL AUTO_INCREMENT,
+     fileName           CHAR(30) NOT NULL,
+     PRIMARY KEY (id)
 );

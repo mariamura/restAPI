@@ -1,7 +1,8 @@
-create table if not exists developer (
-    idDeveloper	            		        SERIAL PRIMARY KEY,
-    developerFirstName    	    	varchar(20) not null,
-    developerLastName              	varchar(10) not null
+CREATE TABLE if not exists event (
+     id                 int NOT NULL AUTO_INCREMENT,
+     date               DATE NOT NULL,
+     idFile             int NOT NULL,
+     PRIMARY KEY (id)
 );
 
 
