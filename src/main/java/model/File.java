@@ -1,10 +1,20 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity(name = "File")
+@Table(name = "file")
 public class File {
 
+    @Id
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "fileName")
     private String name;
 
     public File(int id, String name) {
