@@ -1,7 +1,0 @@
-controller\FileController.class
-StartProgram.class
-controller\UserController.class
-controller\EventController.class
-model\Event.class
-model\File.class
-model\User.class

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 
 @Entity(name = "User")
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -28,6 +28,10 @@ public class User {
     public User(String name, List<Event> events) {
         this.name = name;
         this.events = events;
+    }
+
+    public User(String name) {
+        this.name = name;
     }
 
     public User() {

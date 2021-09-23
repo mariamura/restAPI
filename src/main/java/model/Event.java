@@ -16,7 +16,7 @@ public class Event {
     @Column(name = "date")
     private Date date;
 
-    @Column(name = "idFile")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private File file;
 
     public Event(int id, Date date, File file) {
