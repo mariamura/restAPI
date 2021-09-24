@@ -1,7 +1,6 @@
 package repository.Impl;
 
 import model.Event;
-import model.File;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
