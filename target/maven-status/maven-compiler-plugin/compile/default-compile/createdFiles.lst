@@ -1,3 +1,4 @@
+RestApplication.class
 resource\UserResource.class
 controller\UserController.class
 model\Event.class
@@ -5,7 +6,6 @@ model\File.class
 controller\FileController.class
 repository\UserRepository.class
 repository\Impl\FileRepositoryImpl.class
-StartProgram.class
 repository\Impl\EventRepositoryImpl.class
 repository\EventRepository.class
 controller\EventController.class

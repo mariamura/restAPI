@@ -3,23 +3,17 @@ package resource;
 import model.User;
 import repository.Impl.UserRepositoryImpl;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("users")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
-public class UserResource extends HttpServlet {
+@WebServlet("/users")
+public class UserResource {
 
-    UserRepositoryImpl userRepository;
-
-    public UserResource() {
-        userRepository = new UserRepositoryImpl();
-    }
+    UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
     @GET
     public Response getUsers() {
