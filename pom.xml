@@ -15,7 +15,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <junit.version>4.13.1</junit.version>
         <mockito-core.version>3.12.4</mockito-core.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
         <javax.servlet.api.version>2.5</javax.servlet.api.version>
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
