@@ -37,6 +37,15 @@ public class User {
     public User() {
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", events=" + events +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
@@ -59,15 +68,6 @@ public class User {
 
     public void setEvents(List<Event> events) {
         this.events = events;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", events=" + events +
-                '}';
     }
 
     @Override

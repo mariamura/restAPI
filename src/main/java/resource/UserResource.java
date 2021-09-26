@@ -3,27 +3,20 @@ package resource;
 import model.User;
 import repository.Impl.UserRepositoryImpl;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
-import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@WebServlet("/users")
+@Path("/users")
 public class UserResource {
 
     UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
     @GET
-    public Response getUsers() {
-        List<User> users = userRepository.getAll();
-        GenericEntity<List<User>> entity = new GenericEntity<>(users) {
-        };
-
-        return Response
-                .ok(entity)
-                .build();
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> list() throws Exception {
+        return userRepository.getAll();
     }
 
     @GET

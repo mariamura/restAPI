@@ -10,6 +10,5 @@ repository\Impl\EventRepositoryImpl.class
 repository\EventRepository.class
 controller\EventController.class
 repository\Impl\UserRepositoryImpl.class
-resource\UserResource$1.class
 repository\FileRepository.class
 model\User.class
