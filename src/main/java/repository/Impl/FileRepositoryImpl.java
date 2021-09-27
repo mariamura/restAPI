@@ -52,7 +52,7 @@ public class FileRepositoryImpl implements FileRepository {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        List<File> files = session.createQuery("FROM File").list();
+        List<File> files = session.createQuery("FROM Files").list();
 
         transaction.commit();
         session.close();

@@ -1,13 +1,11 @@
 package model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Objects;
 
-@Entity(name = "File")
-@Table(name = "file")
+@javax.persistence.Entity(name = "Files")
+@javax.persistence.Table(name = "file")
 public class File {
 
     @Id

@@ -31,9 +31,6 @@
         <mapping class="model.Event"/>
         <mapping class="model.File"/>
 
-        <!-- <mapping resource="Skill.hbm.xml"/>
-        <mapping resource="Developer.hbm.xml"/>
-        <mapping resource="Team.hbm.xml"/> -->
 
     </session-factory>
 </hibernate-configuration>

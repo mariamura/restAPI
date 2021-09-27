@@ -38,10 +38,6 @@ public class UserController {
     public void printAll() {
         userRepository.getAll().
                 stream().
-                forEach(n -> System.out.println(n.getId() + ": " + n.getId() + " " + n.getName() + " " + n.getEvents()));
+                forEach(n -> System.out.println(n.getId() + ": " + n.getName() + " " + n.getEvents()));
     }
-
-
-
-
 }

@@ -52,7 +52,7 @@ public class EventRepositoryImpl implements EventRepository {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Event> events = session.createQuery("FROM Event").list();
+        List<Event> events = session.createQuery("FROM Events").list();
 
         transaction.commit();
         session.close();
