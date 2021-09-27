@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-@javax.persistence.Entity(name = "User")
+@javax.persistence.Entity(name = "Users")
 @javax.persistence.Table(name = "users")
 public class User {
 

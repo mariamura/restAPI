@@ -50,10 +50,8 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public List<User> getAll() {
         Session session = sessionFactory.openSession();
-        Transaction transaction = null;
-
-        transaction = session.beginTransaction();
-        List<User> users = session.createQuery("from users", User.class).getResultList();
+        Transaction transaction = session.beginTransaction();
+        List<User> users = session.createQuery("from Users").list();
 
         transaction.commit();
         session.close();
