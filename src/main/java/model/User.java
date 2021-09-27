@@ -1,12 +1,13 @@
 package model;
 
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 
-@Entity(name = "User")
-@Table(name = "users")
+@javax.persistence.Entity(name = "User")
+@javax.persistence.Table(name = "users")
 public class User {
 
     @Id

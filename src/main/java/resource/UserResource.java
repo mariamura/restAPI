@@ -2,6 +2,7 @@ package resource;
 
 import model.User;
 import repository.Impl.UserRepositoryImpl;
+import repository.UserRepository;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,11 +12,11 @@ import java.util.List;
 @Path("/users")
 public class UserResource {
 
-    UserRepositoryImpl userRepository = new UserRepositoryImpl();
+    private final UserRepository userRepository = new UserRepositoryImpl();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> list() throws Exception {
+    public List<User> list() {
         return userRepository.getAll();
     }
 
