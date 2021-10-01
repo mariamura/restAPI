@@ -3,6 +3,7 @@ package resource;
 import controller.FileController;
 import model.File;
 import repository.Impl.FileRepositoryImpl;
+import service.FileService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,7 +13,7 @@ import java.util.List;
 @Path("/files")
 public class FileResource {
 
-    private final FileController fileController = new FileController(new FileRepositoryImpl());
+    private final FileController fileController = new FileController(new FileService(new FileRepositoryImpl()));
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

@@ -1,40 +1,36 @@
 package controller;
 
 import model.Event;
-import repository.Impl.EventRepositoryImpl;
+import service.EventService;
 
 import java.util.List;
 
 public class EventController {
-    private final EventRepositoryImpl eventRepository;
 
-    public EventController(EventRepositoryImpl eventRepository) {
-        this.eventRepository = eventRepository;
+    private final EventService eventService;
+
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
     }
 
     public List<Event> getAll(){
-        return eventRepository.getAll();
+        return eventService.getAll();
     }
 
     public Event getById(Integer id){
-        return eventRepository.getById(id);
+        return eventService.getById(id);
     }
 
     public Event save(Event event){
-        return eventRepository.save(event);
+        return eventService.save(event);
     }
 
     public Event update(Event event){
-        return eventRepository.update(event);
+        return eventService.update(event);
     }
 
     public void deleteById(Integer id){
-        eventRepository.deleteById(id);
+        eventService.deleteById(id);
     }
 
-    public void printAll() {
-        eventRepository.getAll().
-                stream().
-                forEach(n -> System.out.println(n.getId() + ": " + n.getDate() + " " + n.getFile()));
-    }
 }

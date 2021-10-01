@@ -30,9 +30,7 @@ public class EventRepositoryImpl implements EventRepository {
     @Override
     public Event getById(Integer id) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
         Event event = session.get(Event.class, id);
-        transaction.commit();
         session.close();
         return event;
     }
@@ -49,12 +47,8 @@ public class EventRepositoryImpl implements EventRepository {
 
     @Override
     public List<Event> getAll() {
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
+        Session session = sessionFactory.openSession();
         List<Event> events = session.createQuery("FROM Events").list();
-
-        transaction.commit();
         session.close();
         return events;
     }
@@ -64,12 +58,12 @@ public class EventRepositoryImpl implements EventRepository {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Event event1 = session.get(Event.class, event.getId());
-        event1.setDate(event.getDate());
+        Event eventToUpdate = session.get(Event.class, event.getId());
+        eventToUpdate.setDate(event.getDate());
 
-        session.update(event1);
+        session.update(eventToUpdate);
         transaction.commit();
         session.close();
-        return event1;
+        return eventToUpdate;
     }
 }

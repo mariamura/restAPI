@@ -30,9 +30,7 @@ public class FileRepositoryImpl implements FileRepository {
     @Override
     public File getById(Integer id) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
         File file = session.get(File.class, id);
-        transaction.commit();
         session.close();
         return file;
     }
@@ -49,12 +47,8 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public List<File> getAll() {
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
+        Session session = sessionFactory.openSession();
         List<File> files = session.createQuery("FROM Files").list();
-
-        transaction.commit();
         session.close();
         return files;
     }

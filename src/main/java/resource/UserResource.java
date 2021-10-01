@@ -1,8 +1,9 @@
 package resource;
 
+import controller.UserController;
 import model.User;
 import repository.Impl.UserRepositoryImpl;
-import repository.UserRepository;
+import service.UserService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,18 +13,18 @@ import java.util.List;
 @Path("/users")
 public class UserResource {
 
-    private final UserRepository userRepository = new UserRepositoryImpl();
+    private final UserController userController = new UserController(new UserService(new UserRepositoryImpl()));
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> list() {
-        return userRepository.getAll();
+        return userController.getAll();
     }
 
     @GET
     @Path("/{id}")
     public Response getUser(@PathParam("id") Integer id) {
-        User user = userRepository.getById(id);
+        User user = userController.getById(id);
 
         if (user == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -37,7 +38,7 @@ public class UserResource {
     @POST
     @Path("/create")
     public Response createUser(User user) {
-        if (userRepository.save(user) == null) {
+        if (userController.save(user) == null) {
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
 
@@ -49,7 +50,7 @@ public class UserResource {
     @PUT
     @Path("/update")
     public Response updateUser(User user) {
-        userRepository.update(user);
+        userController.update(user);
         return Response
                 .ok(user)
                 .build();
@@ -58,9 +59,9 @@ public class UserResource {
     @DELETE
     @Path("/{id}")
     public Response deleteUser(@PathParam("id") Integer id) {
-        User user = userRepository.getById(id);
+        User user = userController.getById(id);
         if (user != null) {
-            userRepository.deleteById(id);
+            userController.deleteById(id);
 
             return Response
                     .ok(user)

@@ -4,6 +4,7 @@ import controller.EventController;
 import model.Event;
 import model.User;
 import repository.Impl.EventRepositoryImpl;
+import service.EventService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +14,7 @@ import java.util.List;
 @Path("/events")
 public class EventResource {
 
-    private final EventController eventController = new EventController(new EventRepositoryImpl());
+    private final EventController eventController = new EventController(new EventService(new EventRepositoryImpl()));
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
