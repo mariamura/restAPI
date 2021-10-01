@@ -6,20 +6,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import repository.UserRepository;
+import utils.HibernateUtils;
 
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private static SessionFactory sessionFactory;
-
-    public UserRepositoryImpl() {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-    }
 
     @Override
     public User save(User user) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(user);
         transaction.commit();
@@ -29,17 +25,15 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getById(Integer id) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = HibernateUtils.getSession().openSession();
         User user = session.get(User.class, id);
-        transaction.commit();
         session.close();
         return user;
     }
 
     @Override
     public void deleteById(Integer id) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         Transaction transaction = session.beginTransaction();
         User user = session.get(User.class, id);
         session.delete(user);
@@ -49,18 +43,15 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = HibernateUtils.getSession().openSession();
         List<User> users = session.createQuery("from Users").list();
-
-        transaction.commit();
         session.close();
         return users;
     }
 
     @Override
     public User update(User user) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         Transaction transaction = session.beginTransaction();
 
         User user1 = session.get(User.class, user.getId());

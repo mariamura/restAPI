@@ -6,20 +6,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import repository.FileRepository;
+import utils.HibernateUtils;
 
 import java.util.List;
 
 public class FileRepositoryImpl implements FileRepository {
 
-    private static SessionFactory sessionFactory;
-
-    public FileRepositoryImpl() {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-    }
-
     @Override
     public File save(File file) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(file);
         transaction.commit();
@@ -29,7 +24,7 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public File getById(Integer id) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         File file = session.get(File.class, id);
         session.close();
         return file;
@@ -37,7 +32,7 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public void deleteById(Integer id) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         Transaction transaction = session.beginTransaction();
         File file = session.get(File.class, id);
         session.delete(file);
@@ -47,7 +42,7 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public List<File> getAll() {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         List<File> files = session.createQuery("FROM Files").list();
         session.close();
         return files;
@@ -55,7 +50,7 @@ public class FileRepositoryImpl implements FileRepository {
 
     @Override
     public File update(File file) {
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSession().openSession();
         Transaction transaction = session.beginTransaction();
 
         File file1 = session.get(File.class, file.getId());

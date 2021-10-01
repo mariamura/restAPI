@@ -2,7 +2,6 @@ package resource;
 
 import controller.EventController;
 import model.Event;
-import model.User;
 import repository.Impl.EventRepositoryImpl;
 import service.EventService;
 
